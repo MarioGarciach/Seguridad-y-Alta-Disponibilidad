@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen de Seguridad y Alta Disponibilidad</title>
+
+    <!-- Security Policies (OWASP Top 10 Compliance) -->
+    <!-- Content Security Policy: Restrict sources to self and Google Fonts -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
+    <!-- Referrer Policy: Protect user privacy -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- X-Content-Type-Options (Note: Best set by server, added here for completeness) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.7">
+</head>
+
+<body>
+    <div class="app-background"></div>
+    <div class="container">
+        <header>
+            <div class="settings-container">
+                <button id="settings-btn" class="settings-btn" title="Configuración"
+                    aria-label="Abrir configuración de visualización">⚙️</button>
+                <div id="settings-dropdown" class="settings-dropdown">
+                    <h3>Visualización</h3>
+                    <div class="setting-item">
+                        <label class="switch">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                        <span>🌙 Oscuro</span>
+                    </div>
+
+                    <div class="setting-item">
+                        <label class="switch">
+                            <input type="checkbox" id="sepia-mode-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                        <span>📖 Sepia</span>
+                    </div>
+
+                    <div id="sepia-controls" class="setting-control hidden">
+                        <label for="sepia-slider">Intensidad:</label>
+                        <input type="range" id="sepia-slider" min="0" max="100" value="20">
+                    </div>
+                </div>
+            </div>
+            <h1>Seguridad y Alta Disponibilidad</h1>
+            <p class="subtitle">Simulador de Examen UT1-UT7</p>
+
+            <div class="stats-bar">
+                <div class="stat-box">
+                    <span class="stat-label">Examen</span>
+                    <span id="current-exam" class="stat-value">1/5</span>
+                </div>
+                <!-- ... existing stats ... -->
+                <div class="stat-box">
+                    <span class="stat-label">Puntuación</span>
+                    <span id="score" class="stat-value">0.00</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Correctas</span>
+                    <span id="correct-count" class="stat-value success">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Incorrectas</span>
+                    <span id="incorrect-count" class="stat-value danger">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- ... existing main content ... -->
+            <!-- Pantalla de inicio -->
+            <!-- Pantalla de inicio -->
+            <div id="start-screen" class="exam-section active">
+                <div class="intro-header">
+                    <h2>Selecciona tu Desafío</h2>
+                    <p>Elige un modo para empezar a practicar</p>
+                </div>
+
+                <div class="modes-grid">
+                    <!-- General Exam -->
+                    <div class="mode-card accent-blue">
+                        <div class="mode-icon">🎓</div>
+                        <h3>Examen General</h3>
+                        <p>30 preguntas variadas de todos los temas.</p>
+                        <button class="btn btn-primary mode-btn" data-mode="general">Comenzar Test</button>
+                    </div>
+
+                    <!-- UT1 -->
+                    <div class="mode-card accent-purple">
+                        <div class="mode-icon">🛡️</div>
+                        <h3>Bloque 1</h3>
+                        <p>Fundamentos y Triángulo CID (UT1)</p>
+                        <button class="btn btn-outline mode-btn" data-mode="ut1">Practicar</button>
+                    </div>
+
+                    <!-- UT2 -->
+                    <div class="mode-card accent-green">
+                        <div class="mode-icon">🐛</div>
+                        <h3>Bloque 2</h3>
+                        <p>Amenazas, Malware y Redes (UT2)</p>
+                        <button class="btn btn-outline mode-btn" data-mode="ut2">Practicar</button>
+                    </div>
+
+                    <!-- UT3 -->
+                    <div class="mode-card accent-orange">
+                        <div class="mode-icon">🔑</div>
+                        <h3>Bloque 3</h3>
+                        <p>Acceso Remoto y VPN (UT3)</p>
+                        <button class="btn btn-outline mode-btn" data-mode="ut3">Practicar</button>
+                    </div>
+
+                    <!-- UT4 -->
+                    <div class="mode-card accent-teal">
+                        <div class="mode-icon">🧱</div>
+                        <h3>Bloque 4</h3>
+                        <p>Cortafuegos e Iptables (UT4)</p>
+                        <button class="btn btn-outline mode-btn" data-mode="ut4">Practicar</button>
+                    </div>
+
+                    <!-- UT5 -->
+                    <div class="mode-card accent-red">
+                        <div class="mode-icon">🌐</div>
+                        <h3>Bloque 5</h3>
+                        <p>Proxys y Squid (UT5)</p>
+                        <button class="btn btn-outline mode-btn" data-mode="ut5">Practicar</button>
+                    </div>
+
+                    <!-- UT6 -->
+                    <div class="mode-card accent-blue">
+                        <div class="mode-icon">⚙️</div>
+                        <h3>Bloque 6</h3>
+                        <p>Alta Disponibilidad (UT6)</p>
+                        <button class="btn btn-outline mode-btn" data-mode="ut6">Practicar</button>
+                    </div>
+
+                    <!-- UT7 -->
+                    <div class="mode-card accent-purple">
+                        <div class="mode-icon">⚖️</div>
+                        <h3>Bloque 7</h3>
+                        <p>Legislación y LOPD (UT7)</p>
+                        <button class="btn btn-outline mode-btn" data-mode="ut7">Practicar</button>
+                    </div>
+                </div>
+
+                <div class="rules-footer">
+                    <p>ℹ️ <strong>Reglas:</strong> Correctas +0.33 pts | 3 Incorrectas -0.33 pts</p>
+                </div>
+            </div>
+
+            <!-- Exámenes -->
+            <div id="exam-container" class="exam-section">
+                <div id="questions-container" class="fade-in"></div>
+
+                <div class="navigation">
+                    <button id="exit-btn" class="btn btn-secondary">❌ Salir</button>
+                    <button id="prev-btn" class="btn btn-secondary">← Anterior</button>
+                    <button id="next-btn" class="btn btn-primary">Siguiente →</button>
+                    <button id="submit-exam-btn" class="btn btn-success" style="display: none;">Finalizar
+                        Examen</button>
+                </div>
+            </div>
+
+            <!-- Resultados del examen -->
+            <div id="results-screen" class="exam-section">
+                <div class="results-container">
+                    <h2>Resultados del Examen <span id="exam-number">1</span></h2>
+
+                    <div class="score-wrapper">
+                        <div id="score-circle" class="score-circle">0%</div>
+                    </div>
+
+                    <div class="score-display">Puntuación: <span id="final-score">0.00</span></div>
+                    <p id="result-message" class="result-message"></p>
+
+                    <div id="results-list" class="results-list"></div>
+
+                    <div class="action-buttons">
+                        <button id="review-exam-btn" class="btn btn-secondary">Revisar Respuestas</button>
+                        <button id="next-exam-btn" class="btn btn-primary">Siguiente Examen →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resultados finales -->
+            <div id="final-results-screen" class="exam-section">
+                <div class="results-container">
+                    <div class="trophy-icon">🏆</div>
+                    <h2>Resumen Final</h2>
+                    <div class="score-display">Puntuación Total: <span id="total-final-score">0.00</span></div>
+
+                    <div class="summary-box">
+                        <h3>📊 Desglose por Examen</h3>
+                        <div id="exams-summary" class="summary-grid"></div>
+                    </div>
+
+                    <div class="improvement-box">
+                        <h3>🚀 Áreas de Mejora</h3>
+                        <div id="improvement-areas"></div>
+                    </div>
+
+                    <button id="restart-btn" class="btn btn-primary btn-lg">Volver a Empezar</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Removed previous modal structure, now part of header dropdown -->
+
+        <footer>
+            <p>Hecho por Mario con amor ❤️</p>
+        </footer>
+    </div>
+
+    <button id="scroll-top-btn" class="scroll-top-btn" title="Ir arriba">↑</button>
+
+
+    </div>
+
+    <script src="script.js?v=1.7"></script>
+</body>
+
+</html>

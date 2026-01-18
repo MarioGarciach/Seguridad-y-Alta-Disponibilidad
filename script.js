@@ -1926,6 +1926,7 @@ const questionsContainer = document.getElementById('questions-container');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const submitExamBtn = document.getElementById('submit-exam-btn');
+const exitBtn = document.getElementById('exit-btn');
 const reviewExamBtn = document.getElementById('review-exam-btn');
 const nextExamBtn = document.getElementById('next-exam-btn');
 const restartBtn = document.getElementById('restart-btn');
@@ -2002,7 +2003,7 @@ function setupEventListeners() {
     nextBtn.addEventListener('click', () => navigateQuestion(1));
 
     // Exit Button
-    document.getElementById('exit-btn').addEventListener('click', () => {
+    exitBtn.addEventListener('click', () => {
         if (confirm("¿Seguro que quieres salir? Perderás el progreso actual.")) {
             showStartScreen();
         }

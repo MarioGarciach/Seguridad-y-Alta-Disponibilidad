@@ -2166,7 +2166,25 @@ function startSingleTopicExam(mode) {
 function getQuestionsByMode(mode, count) {
     let pool = questionDatabase.filter(q => q.modes.includes(mode));
     shuffleArray(pool);
-    return pool.slice(0, count);
+
+    let selected = pool.slice(0, count);
+
+    // Shuffle options and update correct answer index for each question
+    return selected.map(q => {
+        // Clone the question to avoid modifying the original database
+        let clonedQ = JSON.parse(JSON.stringify(q));
+        let options = [...clonedQ.options];
+        let correctText = options[clonedQ.correct];
+
+        // Shuffle the options
+        shuffleArray(options);
+
+        // Find the new index of the correct answer
+        clonedQ.options = options;
+        clonedQ.correct = options.indexOf(correctText);
+
+        return clonedQ;
+    });
 }
 
 function renderQuestions(questions) {

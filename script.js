@@ -2,7 +2,6 @@
 const questionDatabase = [
     {
         "id": 1,
-        "id": 1,
         "question": "¿Cuáles son los tres principios fundamentales de la seguridad informática?",
         "options": ["Autenticación, No repudio y Privacidad.", "Confidencialidad, Integridad y Disponibilidad.", "Cifrado, Auditoría y Control."],
         "correct": 1,
@@ -1357,7 +1356,7 @@ const questionDatabase = [
         "options": ["Dependencia absoluta de las órdenes del CEO.", "Independencia funcional para supervisar el cumplimiento.", "Acceso solo a los datos de recursos humanos."],
         "correct": 1,
         "category": "UT7",
-        "modes": ["general", "ut7"],
+        "modes": ["gema", "general", "legislacion", "ut7"],
         "tip": "El DPO debe informar directamente al más alto nivel de dirección pero actuar con autonomía [37, 38]."
     },
     {
@@ -1557,15 +1556,6 @@ const questionDatabase = [
         "category": "UT6",
         "modes": ["general", "ut6"],
         "tip": "Es una de las piezas clave del patrón de 'auto-healing' o autorecuperación [21]."
-    },
-    {
-        "id": 174,
-        "question": "Según el RGPD, ¿cuál es el plazo máximo para notificar una brecha de seguridad de datos personales a la AEPD?",
-        "options": ["24 horas.", "72 horas desde que se tenga conocimiento.", "7 días naturales."],
-        "correct": 1,
-        "category": "UT7",
-        "modes": ["general", "ut7"],
-        "tip": "La notificación debe ser diligente para mitigar riesgos sobre los derechos y libertades de las personas [22, 23]."
     },
     {
         "id": 175,
@@ -1771,7 +1761,7 @@ const questionDatabase = [
         "options": ["proxy_pass", "upstream_server", "forward_to"],
         "correct": 0,
         "category": "UT5",
-        "modes": ["general", "ut5"],
+        "modes": ["gema", "general", "servicios", "ut5"],
         "tip": "Esta es la directiva central que conecta el frontal expuesto con el backend de la aplicación [14]."
     },
     {
@@ -1843,7 +1833,7 @@ const questionDatabase = [
         "options": ["Reiniciar el contenedor si este deja de funcionar.", "Determinar si un contenedor está listo para empezar a recibir tráfico del balanceador.", "Cifrar el tráfico entre pods."],
         "correct": 1,
         "category": "UT6",
-        "modes": ["general", "ut6"],
+        "modes": ["HA", "gema", "general", "ut6"],
         "tip": "A diferencia de las Liveness Probes, estas solo controlan si el servicio está disponible para el usuario [23]."
     },
     {
@@ -1890,6 +1880,870 @@ const questionDatabase = [
         "category": "UT4",
         "modes": ["general", "ut4"],
         "tip": "Estas técnicas permiten interceptar el tráfico de los clientes de forma invisible para ellos [29]."
+    },
+    {
+        "id": 211,
+        "question": "¿Qué comando de **Iptables** permite listar las reglas activas mostrando el detalle de interfaces y contadores de paquetes?",
+        "options": ["iptables -list", "sudo iptables -L -v -n", "iptables -S"],
+        "correct": 1,
+        "category": "Iptables",
+        "modes": ["firewall", "gema", "general"],
+        "tip": "El flag -v (verbose) es necesario para ver el tráfico y -n evita la resolución DNS para mayor rapidez [1], [2], [3]."
+    },
+    {
+        "id": 212,
+        "question": "Al diseñar una **ACL** (Access Control List), ¿qué principio fundamental debe aplicarse para minimizar riesgos?",
+        "options": ["Principio de disponibilidad total.", "Principio de mínimo privilegio.", "Principio de redundancia cíclica."],
+        "correct": 1,
+        "category": "ACL",
+        "modes": ["gema", "general", "politicas"],
+        "tip": "Se debe permitir únicamente el tráfico imprescindible según la necesidad de negocio [4], [5], [6]."
+    },
+    {
+        "id": 213,
+        "question": "¿Qué nivel de **RAID** ofrece redundancia mediante doble paridad, permitiendo el fallo simultáneo de hasta dos discos?",
+        "options": ["RAID 5.", "RAID 10.", "RAID 6."],
+        "correct": 2,
+        "category": "Redundancia",
+        "modes": ["gema", "general", "hardware"],
+        "tip": "A diferencia del RAID 5, el RAID 6 protege contra la pérdida de dos unidades [7], [8], [9]."
+    },
+    {
+        "id": 214,
+        "question": "¿Para qué tipo de entidades es de **obligado cumplimiento** el Esquema Nacional de Seguridad (ENS)?",
+        "options": ["Solo para empresas tecnológicas privadas.", "Para el sector público español y las entidades privadas que le prestan servicios.", "Para cualquier ciudadano con firma digital."],
+        "correct": 1,
+        "category": "ENS",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "El ENS establece los requisitos mínimos para una administración electrónica segura en España [10], [11], [12]."
+    },
+    {
+        "id": 215,
+        "question": "En la gestión de un **Firewall**, ¿cuál es la política recomendada por defecto para el tráfico no identificado?",
+        "options": ["Permitir todo (allow-by-default).", "Denegar todo (deny-by-default).", "Redirigir a la DMZ."],
+        "correct": 1,
+        "category": "Firewall",
+        "modes": ["gema", "general", "redes"],
+        "tip": "Es la base para aplicar el privilegio mínimo en el tráfico de red [13], [14], [15]."
+    },
+    {
+        "id": 216,
+        "question": "¿Qué tipo de **Proxy** se sitúa frente a los servidores para ofrecer seguridad, balanceo y terminación SSL?",
+        "options": ["Proxy directo.", "Proxy transparente.", "Proxy inverso."],
+        "correct": 2,
+        "category": "Proxys",
+        "modes": ["gema", "general", "redes"],
+        "tip": "El proxy inverso publica servicios internos de forma segura hacia el exterior [16], [17], [18]."
+    },
+    {
+        "id": 217,
+        "question": "¿Cuál es el puerto de escucha estándar que utiliza el servidor **Proxy Squid**?",
+        "options": ["8080.", "3128.", "443."],
+        "correct": 1,
+        "category": "Squid",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Aunque es configurable, el puerto 3128 es el valor por defecto en squid.conf [19], [20], [21]."
+    },
+    {
+        "id": 218,
+        "question": "En **Kubernetes**, ¿qué componente garantiza la 'autorecuperación' reiniciando contenedores fallidos?",
+        "options": ["Liveness Probes.", "ConfigMaps.", "Ingress Controllers."],
+        "correct": 0,
+        "category": "Kubernetes",
+        "modes": ["gema", "general", "virtualizacion"],
+        "tip": "Las sondas de salud (probes) permiten al orquestador saber si un pod debe reiniciarse [22], [23], [24]."
+    },
+    {
+        "id": 219,
+        "question": "El **Delegado de Protección de Datos (DPO/DPD)** actúa principalmente como enlace entre:",
+        "options": ["La empresa y sus proveedores de hardware.", "La organización, los interesados y la autoridad de control (AEPD).", "El departamento de marketing y el de ventas."],
+        "correct": 1,
+        "category": "DPO",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Supervisa el cumplimiento del RGPD de forma independiente [25], [26], [27]."
+    },
+    {
+        "id": 220,
+        "question": "Según el RGPD, ¿de qué plazo máximo dispone una empresa para **avisar a la AEPD** tras tener conocimiento de una brecha de seguridad?",
+        "options": ["24 horas.", "48 horas.", "72 horas."],
+        "correct": 2,
+        "category": "Proteccion de Datos",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "La notificación debe ser diligente para mitigar riesgos sobre los derechos y libertades [28], [29], [30], [31]."
+    },
+    {
+        "id": 221,
+        "question": "¿Qué protocolo de **VPN** destaca por usar criptografía moderna, ser muy ligero y estar integrado en el kernel de Linux?",
+        "options": ["IPsec.", "OpenVPN.", "WireGuard."],
+        "correct": 2,
+        "category": "VPN",
+        "modes": ["gema", "general", "redes"],
+        "tip": "WireGuard ofrece mayor rendimiento y simplicidad que los protocolos tradicionales [32], [33], [34], [35]."
+    },
+    {
+        "id": 222,
+        "question": "Para robustecer un **Servidor SSH**, ¿qué directiva de `sshd_config` se debe establecer en 'no' por seguridad?",
+        "options": ["PubkeyAuthentication.", "PermitRootLogin.", "AllowUsers."],
+        "correct": 1,
+        "category": "SSH",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Impedir el acceso directo al usuario root reduce ataques de fuerza bruta dirigidos [36], [37], [38], [39]."
+    },
+    {
+        "id": 223,
+        "question": "En una topología de red segura, ¿dónde se ubica idealmente la **DMZ**?",
+        "options": ["Dentro de la red interna protegida.", "Entre un firewall perimetral y uno interno.", "Directamente conectada al router del ISP sin protección."],
+        "correct": 1,
+        "category": "DMZ",
+        "modes": ["gema", "general", "redes"],
+        "tip": "Esto evita que un compromiso en un servicio expuesto dé acceso directo a la red sensible [40], [41], [42], [43]."
+    },
+    {
+        "id": 224,
+        "question": "Al configurar un **Proxy Inverso con NGINX**, ¿qué directiva se usa para apuntar al servidor interno (backend)?",
+        "options": ["proxy_pass.", "upstream_server.", "forward_to."],
+        "correct": 0,
+        "category": "NGINX",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Es la directiva central que define hacia dónde fluye el tráfico desde el frontal [44], [45], [46], [47]."
+    },
+    {
+        "id": 225,
+        "question": "¿Qué algoritmo de **Balanceador de Carga** envía la petición al servidor que tiene menos sesiones activas en ese momento?",
+        "options": ["Round-robin.", "IP-hash.", "Least-connections."],
+        "correct": 2,
+        "category": "Balanceador",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Es ideal para repartir carga en aplicaciones con sesiones persistentes o heterogéneas [48], [49], [50]."
+    },
+    {
+        "id": 226,
+        "question": "¿Qué comando de **PowerShell** permite verificar si el cifrado de **Bitlocker** está activo y al 100%?",
+        "options": ["Get-BitlockerStatus.", "manage-bde -status.", "bitlocker --check."],
+        "correct": 1,
+        "category": "Bitlocker",
+        "modes": ["gema", "general", "sistemas"],
+        "tip": "Este comando muestra el estado de todas las unidades y sus protectores [1], [51], [52], [53]."
+    },
+    {
+        "id": 227,
+        "question": "Si un interesado ejerce su **derecho a la portabilidad**, la empresa debe entregar sus datos en un formato:",
+        "options": ["Papel impreso únicamente.", "Estructurado, de uso común y lectura mecánica.", "Cualquier formato que decida la empresa."],
+        "correct": 1,
+        "category": "Proteccion de Datos",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Se suelen usar formatos como JSON o CSV para facilitar la interoperabilidad [54], [55], [56]."
+    },
+    {
+        "id": 228,
+        "question": "Al **documentar** una regla de firewall, ¿qué elemento es imprescindible para justificar su existencia en una auditoría?",
+        "options": ["El color del cable de red.", "La justificación de negocio y el propietario (owner).", "La marca del servidor."],
+        "correct": 1,
+        "category": "Documentacion",
+        "modes": ["gema", "general", "gestion"],
+        "tip": "Sin justificación ni responsable, las reglas se vuelven obsoletas e inseguras [57], [58], [59]."
+    },
+    {
+        "id": 229,
+        "question": "En **PowerShell**, ¿para qué sirve el cmdlet `Get-NetTCPConnection`?",
+        "options": ["Para cifrar el disco duro.", "Para monitorizar conexiones de red activas y sus procesos asociados.", "Para crear un nuevo usuario en el sistema."],
+        "correct": 1,
+        "category": "PowerShell",
+        "modes": ["gema", "general", "sistemas"],
+        "tip": "Permite ver qué proceso (PID) está ocupando cada puerto de red [60], [61], [62]."
+    },
+    {
+        "id": 230,
+        "question": "En el contexto de **Bases de Datos**, ¿qué significa el mecanismo TDE?",
+        "options": ["Total Data Erasure (Borrado total).", "Transparent Data Encryption (Cifrado de datos en reposo).", "Time-Delay Entry (Entrada retardada)."],
+        "correct": 1,
+        "category": "Bases de Datos",
+        "modes": ["gema", "general", "sistemas"],
+        "tip": "Protege la confidencialidad cifrando los ficheros de datos en el disco duro [63], [64], [65], [53]."
+    },
+    {
+        "id": 231,
+        "question": "En **Iptables**, ¿qué tabla se utiliza específicamente para realizar el enmascaramiento de IPs (NAT)?",
+        "options": ["filter.", "nat.", "mangle."],
+        "correct": 1,
+        "category": "Iptables",
+        "modes": ["gema", "general", "redes"],
+        "tip": "La tabla nat gestiona reglas de PREROUTING y POSTROUTING para modificar destinos u orígenes [66], [67], [68], [69]."
+    },
+    {
+        "id": 232,
+        "question": "Según el **ENS**, los sistemas se clasifican según el impacto de un incidente en las categorías:",
+        "options": ["Interna, Externa y DMZ.", "Básica, Media y Alta.", "Pública y Privada."],
+        "correct": 1,
+        "category": "ENS",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Esta clasificación determina el rigor de las medidas de seguridad a aplicar [10], [70], [71]."
+    },
+    {
+        "id": 233,
+        "question": "¿Qué nivel de filtrado de **Firewall** es capaz de inspeccionar el contenido de la aplicación (Capa 7) para detectar ataques SQLi?",
+        "options": ["Filtrado por paquetes.", "Filtrado de estado (Stateful).", "Inspección profunda (DPI/Aplicación)."],
+        "correct": 2,
+        "category": "Firewall",
+        "modes": ["gema", "general", "redes"],
+        "tip": "El DPI analiza el payload para reconocer aplicaciones y patrones maliciosos [72], [73], [74]."
+    },
+    {
+        "id": 234,
+        "question": "Dentro de un clúster de servidores, ¿qué función cumple el **Heartbeat**?",
+        "options": ["Cifrar la base de datos.", "Monitorizar la salud de los nodos para disparar el failover si uno cae.", "Aumentar la velocidad del procesador."],
+        "correct": 1,
+        "category": "Redundancia",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Es el latido constante que detecta la disponibilidad de los miembros del grupo [75], [76], [77]."
+    },
+    {
+        "id": 235,
+        "question": "Dada la línea de **PowerShell** `New-NetFirewallRule -DisplayName 'Block1234' -Direction Inbound -LocalPort 1234 -Protocol TCP -Action Block`, ¿qué hace?",
+        "options": ["Permite el tráfico web.", "Bloquea cualquier conexión TCP entrante al puerto 1234.", "Borra los logs del firewall."],
+        "correct": 1,
+        "category": "PowerShell",
+        "modes": ["firewall", "gema", "general"],
+        "tip": "Crea una regla restrictiva para un puerto específico en Windows [78], [79], [62]."
+    },
+    {
+        "id": 236,
+        "question": "En un servidor **SSH**, ¿qué directiva de `sshd_config` permite limitar el acceso únicamente a un usuario o grupo específico?",
+        "options": ["PermitUser login", "AllowUsers", "UserRestriction"],
+        "correct": 1,
+        "category": "SSH",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Es una de las medidas de endurecimiento (hardening) más eficaces para reducir la superficie de ataque en accesos remotos [4, 5]."
+    },
+    {
+        "id": 237,
+        "question": "¿Qué tabla de **Iptables** se utiliza para realizar la redirección de tráfico necesaria en un **proxy transparente**?",
+        "options": ["filter", "mangle", "nat"],
+        "correct": 2,
+        "category": "Iptables",
+        "modes": ["firewall", "gema", "general"],
+        "tip": "La tabla 'nat' permite usar la cadena PREROUTING para redirigir el tráfico del puerto 80 al puerto del proxy [6, 7]."
+    },
+    {
+        "id": 239,
+        "question": "Dada la siguiente línea de **PowerShell**: `Get-Process -Id (Get-NetTCPConnection -State Listen).OwningProcess`, ¿qué se está obteniendo?",
+        "options": ["La lista de todos los archivos abiertos por el sistema.", "Los procesos específicos que mantienen puertos en estado de escucha.", "La IP de los atacantes que intentan entrar por fuerza bruta."],
+        "correct": 1,
+        "category": "PowerShell",
+        "modes": ["comandos", "gema", "general"],
+        "tip": "Esta combinación permite identificar exactamente qué aplicación (proceso) está detrás de cada puerto abierto en el firewall [10, 11]."
+    },
+    {
+        "id": 240,
+        "question": "Bajo el **ENS** (Esquema Nacional de Seguridad), ¿qué categoría de sistema exige las medidas de seguridad más rigurosas?",
+        "options": ["Básica.", "Media.", "Alta."],
+        "correct": 2,
+        "category": "ENS",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "La categoría se determina según el impacto (bajo, medio, alto) que tendría un incidente sobre los servicios o la información [12, 13]."
+    },
+    {
+        "id": 241,
+        "question": "En el contexto de las **Bases de Datos**, ¿qué garantiza el mecanismo de **Quorum** en un clúster?",
+        "options": ["El cifrado de las contraseñas de los administradores.", "Evitar el estado de 'split-brain' asegurando que solo una partición mayoritaria pueda escribir.", "Que todos los usuarios tengan el mismo nivel de acceso."],
+        "correct": 1,
+        "category": "Bases de Datos",
+        "modes": ["HA", "gema", "general"],
+        "tip": "El quorum requiere una mayoría de nodos activos para tomar decisiones y evitar corrupción de datos [4, 14]."
+    },
+    {
+        "id": 242,
+        "question": "¿Cuál es el puerto estándar que utiliza **Squid** por defecto en su directiva `http_port`?",
+        "options": ["8080", "3128", "80"],
+        "correct": 1,
+        "category": "Squid",
+        "modes": ["gema", "general", "proxy"],
+        "tip": "Es el puerto de escucha típico definido en el archivo squid.conf [15, 16]."
+    },
+    {
+        "id": 243,
+        "question": "En un análisis forense, ¿por qué es crítico el concepto de **Cadena de Custodia**?",
+        "options": ["Para asegurar que el sospechoso permanezca en prisión.", "Para garantizar la trazabilidad e integridad de las evidencias desde su recogida hasta el juicio.", "Para poder borrar los datos una vez analizados."],
+        "correct": 1,
+        "category": "Forense",
+        "modes": ["UT1", "gema", "general"],
+        "tip": "Asegura que la evidencia no ha sido manipulada y que los hallazgos son reproducibles y legales [17, 18]."
+    },
+    {
+        "id": 244,
+        "question": "¿Qué ocurre técnicamente cuando una empresa aplica el **Derecho a la Portabilidad** de un usuario?",
+        "options": ["Debe imprimir todos los datos en papel sellado.", "Debe entregar los datos en un formato estructurado, de uso común y lectura mecánica (como JSON).", "Debe borrar los datos inmediatamente sin dar copia."],
+        "correct": 1,
+        "category": "RGPD",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "El objetivo es facilitar que el usuario traslade sus datos de un proveedor a otro fácilmente [19, 20]."
+    },
+    {
+        "id": 245,
+        "question": "En el servidor **NGINX**, ¿qué directiva se usa para definir el balanceo de carga entre varios servidores internos?",
+        "options": ["proxy_pass", "upstream", "load_balance"],
+        "correct": 1,
+        "category": "NGINX",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "El bloque 'upstream' define el grupo de servidores y el algoritmo de reparto (como round-robin) [21, 22]."
+    },
+    {
+        "id": 246,
+        "question": "Para auditar quién tiene privilegios de **sudo** en un sistema Linux, ¿qué archivo o directorio es fundamental revisar?",
+        "options": ["/etc/shadow", "/etc/sudoers y /etc/sudoers.d/", "/var/log/lastlog"],
+        "correct": 1,
+        "category": "Linux",
+        "modes": ["gema", "general", "seguridad"],
+        "tip": "Mediante el comando 'visudo' se gestionan estos permisos críticos de elevación [23, 24]."
+    },
+    {
+        "id": 247,
+        "question": "Al configurar un **túnel VPN** con **WireGuard**, ¿en qué se basa principalmente su mecanismo de autenticación?",
+        "options": ["Intercambio de certificados X.509 complejos.", "Uso de pares de claves públicas y privadas ligeras (Curve25519).", "Contraseñas dinámicas enviadas por SMS."],
+        "correct": 1,
+        "category": "VPN",
+        "modes": ["gema", "general", "redes"],
+        "tip": "WireGuard utiliza criptografía moderna y sencilla, lo que lo hace muy rápido y eficiente [25, 26]."
+    },
+    {
+        "id": 248,
+        "question": "¿Cuál es la función del chip **TPM** en relación con **BitLocker**?",
+        "options": ["Acelerar la velocidad del procesador al cifrar.", "Almacenar de forma segura las claves de cifrado y verificar la integridad del arranque.", "Actuar como una tarjeta de red secundaria."],
+        "correct": 1,
+        "category": "Bitlocker",
+        "modes": ["gema", "general", "sistemas"],
+        "tip": "El TPM (Trusted Platform Module) asegura que el disco solo se descifre si el hardware no ha sido alterado [27, 28]."
+    },
+    {
+        "id": 249,
+        "question": "En el diseño de una **DMZ**, ¿qué significa que un servicio esté en 'Dual-Homed'?",
+        "options": ["Que tiene dos direcciones IP públicas.", "Que el servidor tiene interfaces en dos redes distintas (normalmente DMZ e interna).", "Que el servidor tiene dos fuentes de alimentación."],
+        "correct": 1,
+        "category": "DMZ",
+        "modes": ["gema", "general", "redes"],
+        "tip": "Esta configuración debe ser cuidadosamente controlada por el firewall para evitar puentes no autorizados [29, 30]."
+    },
+    {
+        "id": 250,
+        "question": "Según el **RGPD**, el **Delegado de Protección de Datos (DPO)** debe informar directamente a:",
+        "options": ["El departamento de informática.", "El nivel más alto de la dirección de la empresa o entidad.", "La policía nacional."],
+        "correct": 1,
+        "category": "DPO",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Esto garantiza su independencia y que la privacidad sea una prioridad estratégica [31, 32]."
+    },
+    {
+        "id": 251,
+        "question": "¿Qué comando de **PowerShell** permite ver el estado de todos los perfiles (Dominio, Privado, Público) del firewall de Windows?",
+        "options": ["Show-NetFirewallStatus", "Get-NetFirewallProfile", "Check-FirewallState"],
+        "correct": 1,
+        "category": "PowerShell",
+        "modes": ["comandos", "gema", "general"],
+        "tip": "Muestra si el firewall está activo en cada perfil y la política por defecto [33, 34]."
+    },
+    {
+        "id": 252,
+        "question": "En un sistema de **Alta Disponibilidad (HA)**, ¿qué es el **LACP** (Link Aggregation Control Protocol)?",
+        "options": ["Un protocolo para cifrar bases de datos.", "Una técnica para agrupar varios enlaces de red físicos en uno lógico para redundancia.", "Un sistema de alimentación ininterrumpida."],
+        "correct": 1,
+        "category": "Redundancia",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Evita que la caída de un cable de red deje al servidor sin conectividad [35, 36]."
+    },
+    {
+        "id": 253,
+        "question": "Dentro de la documentación técnica de seguridad, ¿qué es un **Runbook**?",
+        "options": ["Un libro con las contraseñas de todos los usuarios.", "Una guía de procedimientos paso a paso para tareas operativas o de recuperación.", "Un catálogo de hardware de la empresa."],
+        "correct": 1,
+        "category": "Documentacion",
+        "modes": ["gema", "general", "gestion"],
+        "tip": "Son vitales para que cualquier técnico pueda actuar correctamente ante un fallo o mantenimiento [37, 38]."
+    },
+    {
+        "id": 254,
+        "question": "¿Qué algoritmo de balanceo de carga sería el más adecuado si queremos que un cliente mantenga su sesión en el mismo servidor?",
+        "options": ["Round-robin.", "IP-hash.", "Least-connections."],
+        "correct": 1,
+        "category": "Balanceador",
+        "modes": ["HA", "gema", "general"],
+        "tip": "IP-hash utiliza la dirección IP del cliente para asignarlo siempre al mismo backend [39, 40]."
+    },
+    {
+        "id": 255,
+        "question": "En el **Esquema Nacional de Seguridad (ENS)**, el principio de 'Defensa en profundidad' implica:",
+        "options": ["Instalar un solo firewall muy potente.", "Disponer de múltiples capas de seguridad (física, lógica, organizativa).", "Enterrar los servidores bajo tierra para mayor seguridad."],
+        "correct": 1,
+        "category": "ENS",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Si una capa falla, las demás deben ser capaces de contener la amenaza [41, 42]."
+    },
+    {
+        "id": 256,
+        "question": "En **Iptables**, ¿cuál es la cadena que filtra el tráfico que atraviesa el firewall con destino a otra red?",
+        "options": ["INPUT", "OUTPUT", "FORWARD"],
+        "correct": 2,
+        "category": "Iptables",
+        "modes": ["gema", "general", "redes"],
+        "tip": "La cadena FORWARD es clave cuando el equipo Linux actúa como router o firewall perimetral [43, 44]."
+    },
+    {
+        "id": 257,
+        "question": "En una base de datos con **TDE** activo, los datos se cifran:",
+        "options": ["Solo cuando el usuario los consulta.", "En el disco duro (en reposo) de forma transparente para la aplicación.", "Mediante la contraseña del usuario final."],
+        "correct": 1,
+        "category": "Bases de Datos",
+        "modes": ["gema", "general", "seguridad"],
+        "tip": "Transparent Data Encryption protege los archivos de datos físicos ante robos de soporte [45, 46]."
+    },
+    {
+        "id": 258,
+        "question": "¿Qué utilidad tiene el comando `sudo journalctl -u ssh` en una investigación de seguridad en Linux?",
+        "options": ["Reiniciar el servicio SSH.", "Ver los logs específicos del servicio SSH para detectar intentos de acceso.", "Cambiar la contraseña de root."],
+        "correct": 1,
+        "category": "Linux",
+        "modes": ["comandos", "gema", "general"],
+        "tip": "Es fundamental para auditar ataques de fuerza bruta contra el puerto 22 [47, 48]."
+    },
+    {
+        "id": 259,
+        "question": "Dada la línea de **PowerShell** `manage-bde -on C: -RecoveryPassword`, ¿qué se está realizando?",
+        "options": ["Borrando la unidad C.", "Activando BitLocker en la unidad C y generando una clave de recuperación.", "Cambiando la contraseña del usuario administrador."],
+        "correct": 1,
+        "category": "Bitlocker",
+        "modes": ["comandos", "gema", "general"],
+        "tip": "Es el comando estándar para iniciar el cifrado de disco en Windows mediante consola [25, 46]."
+    },
+    {
+        "id": 260,
+        "question": "Bajo la **LOPDGDD**, la 'Responsabilidad Proactiva' exige a las empresas:",
+        "options": ["Esperar a que la AEPD les diga qué hacer.", "Ser capaces de demostrar con evidencias que cumplen con las medidas de seguridad.", "Pagar un seguro de ciberseguridad obligatorio."],
+        "correct": 1,
+        "category": "LOPDGDD",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "No basta con cumplir, hay que poder probarlo (Accountability) [49, 50]."
+    },
+    {
+        "id": 261,
+        "question": "En el servidor **Squid**, ¿qué parámetro del archivo de configuración define la cantidad de memoria RAM dedicada a almacenar objetos de caché?",
+        "options": ["cache_dir", "cache_mem", "maximum_object_size"],
+        "correct": 1,
+        "category": "ProxySquid",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Se debe dimensionar según la carga para mejorar la velocidad de respuesta sin agotar la memoria del sistema [1], [2]."
+    },
+    {
+        "id": 262,
+        "question": "¿Qué comando de **Iptables** se utiliza para guardar la configuración actual de las reglas en un archivo de texto?",
+        "options": ["sudo iptables -L > reglas.txt", "sudo iptables-save > /ruta/archivo.rules", "sudo iptables-export"],
+        "correct": 1,
+        "category": "Iptables",
+        "modes": ["firewall", "gema", "general"],
+        "tip": "Este comando vuelca el estado de todas las tablas para permitir su posterior restauración con iptables-restore [3]."
+    },
+    {
+        "id": 263,
+        "question": "En **Kubernetes**, ¿cuál es la función de la sonda de salud denominada 'Liveness Probe'?",
+        "options": ["Determinar si un pod está listo para recibir tráfico.", "Detectar contenedores fallidos y reiniciarlos para mantener la disponibilidad.", "Escalar el número de réplicas automáticamente."],
+        "correct": 1,
+        "category": "Kubernetes",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Es una pieza clave para el 'auto-healing', garantizando que los contenedores colgados se reinicien [4], [5]."
+    },
+    {
+        "id": 264,
+        "question": "Dada la siguiente línea en **PowerShell**: `Get-NetFirewallRule -Direction Inbound -Action Block`, ¿qué se está visualizando?",
+        "options": ["Todas las reglas de salida que permiten tráfico.", "Todas las reglas de entrada configuradas para bloquear el tráfico.", "El estado de las interfaces de red."],
+        "correct": 1,
+        "category": "PowerShell",
+        "modes": ["firewall", "gema", "general"],
+        "tip": "El cmdlet permite filtrar el inventario de reglas por dirección y acción para auditoría rápida [6], [7]."
+    },
+    {
+        "id": 265,
+        "question": "Según el **Esquema Nacional de Seguridad (ENS)**, ¿qué principio busca asegurar que los sistemas tengan múltiples capas de seguridad?",
+        "options": ["Mínimo privilegio.", "Defensa en profundidad.", "Responsabilidad proactiva."],
+        "correct": 1,
+        "category": "ENS",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Consiste en disponer de barreras físicas, lógicas y organizativas para que, si una falla, el sistema no se comprometa totalmente [8], [9]."
+    },
+    {
+        "id": 266,
+        "question": "En un entorno de **Alta Disponibilidad**, ¿qué es el 'LACP'?",
+        "options": ["Un protocolo para cifrar bases de datos.", "Una técnica para agrupar varios enlaces de red físicos en uno lógico para redundancia.", "Un sistema de alimentación ininterrumpida."],
+        "correct": 1,
+        "category": "Redundancia",
+        "modes": ["HA", "gema", "general"],
+        "tip": "También conocido como 'teaming', evita que el fallo de un cable o puerto deje al servidor sin red [10], [11]."
+    },
+    {
+        "id": 267,
+        "question": "Para que un **Proxy Squid** funcione en 'modo transparente' (intercept), es necesario realizar en el gateway de red una:",
+        "options": ["Configuración manual del navegador en cada cliente.", "Redirección de tráfico (NAT) del puerto 80 al puerto del proxy.", "Instalación de un certificado digital en cada equipo."],
+        "correct": 1,
+        "category": "ProxySquid",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Suele implementarse con reglas de Iptables en la tabla NAT (cadena PREROUTING) [12], [13]."
+    },
+    {
+        "id": 268,
+        "question": "En la configuración de un **Servidor SSH**, ¿qué directiva permite restringir el acceso únicamente a usuarios específicos?",
+        "options": ["PermitUser login", "AllowUsers", "StrictUserCheck"],
+        "correct": 1,
+        "category": "SSH",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Es una medida de endurecimiento (hardening) que reduce drásticamente la superficie de ataque [14], [15]."
+    },
+    {
+        "id": 269,
+        "question": "¿Cuál es la función principal de la **DMZ** (Zona Desmilitarizada) en una arquitectura de red?",
+        "options": ["Almacenar las copias de seguridad de la empresa.", "Aislar servicios expuestos a Internet de la red interna sensible.", "Conectar directamente los equipos de los empleados a Internet."],
+        "correct": 1,
+        "category": "DMZ",
+        "modes": ["gema", "general", "redes"],
+        "tip": "Actúa como una zona intermedia para que un compromiso en el servidor web no de acceso directo a los datos internos [16], [17]."
+    },
+    {
+        "id": 270,
+        "question": "Bajo el **RGPD**, el 'Derecho a la Portabilidad' exige que los datos se entreguen en un formato:",
+        "options": ["Papel impreso debidamente sellado.", "Estructurado, de uso común y lectura mecánica.", "Encriptado con una clave que solo tenga la empresa."],
+        "correct": 1,
+        "category": "Ley de Protección de Datos",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "El objetivo es facilitar que el usuario traslade sus datos a otro proveedor sin impedimentos técnicos [18], [19]."
+    },
+    {
+        "id": 271,
+        "question": "¿Qué comando de **PowerShell** permite monitorizar conexiones TCP activas e identificar el proceso (PID) que las originó?",
+        "options": ["Get-Process", "Get-NetTCPConnection", "Show-NetworkState"],
+        "correct": 1,
+        "category": "PowerShell",
+        "modes": ["comandos", "gema", "general"],
+        "tip": "Es fundamental para identificar conexiones sospechosas de malware hacia servidores externos [20], [21]."
+    },
+    {
+        "id": 273,
+        "question": "En **Bases de Datos**, el mecanismo 'TDE' (Transparent Data Encryption) protege la información:",
+        "options": ["En tránsito a través de la red.", "En reposo (almacenada en disco).", "Solo durante las consultas del usuario."],
+        "correct": 1,
+        "category": "Bases de datos",
+        "modes": ["gema", "general", "sistemas"],
+        "tip": "Cifra los archivos físicos de la base de datos para que sean ilegibles si se roba el soporte físico [23], [24]."
+    },
+    {
+        "id": 274,
+        "question": "Según la normativa española, si una empresa sufre una brecha de seguridad de datos personales, tiene un plazo máximo de:",
+        "options": ["24 horas para avisar a los afectados.", "72 horas para avisar a la AEPD.", "7 días para realizar una auditoría."],
+        "correct": 1,
+        "category": "Ley de Protección de Datos",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "La notificación debe hacerse desde que se tiene constancia de la brecha, salvo que sea improbable el riesgo [25], [26]."
+    },
+    {
+        "id": 276,
+        "question": "En **Iptables**, ¿qué cadena de la tabla 'filter' se encarga de gestionar el tráfico que atraviesa el firewall con destino a otra red?",
+        "options": ["INPUT", "OUTPUT", "FORWARD"],
+        "correct": 2,
+        "category": "Iptables",
+        "modes": ["gema", "general", "redes"],
+        "tip": "Es la cadena fundamental cuando el equipo Linux actúa como router o firewall de red [29], [30]."
+    },
+    {
+        "id": 277,
+        "question": "¿Qué algoritmo de un **Balanceador de Carga** sería el más adecuado para repartir tráfico de forma cíclica y equitativa entre servidores idénticos?",
+        "options": ["Least-connections", "Round-robin", "IP-hash"],
+        "correct": 1,
+        "category": "Balanceador de carga",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Reparte las peticiones una a una siguiendo el orden de la lista de servidores [31], [32]."
+    },
+    {
+        "id": 278,
+        "question": "Un **Túnel VPN** configurado en 'Modo Túnel' (frente al Modo Transporte) se caracteriza por:",
+        "options": ["No cifrar los datos, solo comprimirlos.", "Cifrar tanto los datos como el encabezado IP original, encapsulándolos en un nuevo paquete.", "Solo ser compatible con redes Wi-Fi públicas."],
+        "correct": 1,
+        "category": "Tunel VPN",
+        "modes": ["gema", "general", "redes"],
+        "tip": "Es el modo estándar para conexiones de red a red (site-to-site) porque oculta la topología interna [33], [34]."
+    },
+    {
+        "id": 279,
+        "question": "En la documentación técnica, un **'Runbook'** se define como:",
+        "options": ["Un libro con la historia de la empresa.", "Una guía de procedimientos detallados paso a paso para realizar tareas operativas o de recuperación.", "Un inventario de hardware descatalogado."],
+        "correct": 1,
+        "category": "Documentacion",
+        "modes": ["gema", "general", "gestion"],
+        "tip": "Son esenciales para que cualquier técnico pueda actuar correctamente ante fallos o mantenimientos [35], [36]."
+    },
+    {
+        "id": 280,
+        "question": "Para evitar ataques de 'fatiga MFA' (bombardeo de notificaciones push), se recomienda utilizar:",
+        "options": ["MFA basado en SMS.", "MFA resistente al phishing como llaves FIDO2 o 'número de coincidencia'.", "Desactivar el MFA temporalmente."],
+        "correct": 1,
+        "category": "MFA",
+        "modes": ["gema", "general", "identidad"],
+        "tip": "Obligar al usuario a introducir un número que ve en pantalla evita que apruebe por error o cansancio [37], [38]."
+    },
+    {
+        "id": 281,
+        "question": "En el **Esquema Nacional de Seguridad (ENS)**, los sistemas se categorizan en Básica, Media y Alta basándose en:",
+        "options": ["El número de usuarios conectados.", "El impacto que tendría un incidente sobre la seguridad de la información o los servicios.", "El presupuesto anual del departamento de IT."],
+        "correct": 1,
+        "category": "ENS",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Esta clasificación determina qué medidas de seguridad del anexo II son obligatorias aplicar [39], [9]."
+    },
+    {
+        "id": 282,
+        "question": "¿Qué comando de Linux permite auditar los intentos de acceso realizados al servicio **SSH** en las últimas 24 horas?",
+        "options": ["cat /etc/passwd", "sudo journalctl -u ssh --since '24 hours ago'", "ssh-audit --all"],
+        "correct": 1,
+        "category": "SSH",
+        "modes": ["comandos", "gema", "general"],
+        "tip": "Permite identificar rápidamente ataques de fuerza bruta dirigidos al puerto 22 [40], [41]."
+    },
+    {
+        "id": 283,
+        "question": "Un **Firewall de Aplicación (WAF)** es capaz de detectar ataques específicos de la capa 7 como:",
+        "options": ["ARP Spoofing.", "Inyección SQL (SQLi) y Cross-Site Scripting (XSS).", "Cortes en el suministro eléctrico."],
+        "correct": 1,
+        "category": "Firewall",
+        "modes": ["gema", "general", "redes"],
+        "tip": "A diferencia de un firewall de red, el WAF inspecciona el contenido de las peticiones HTTP/S [42], [43]."
+    },
+    {
+        "id": 284,
+        "question": "El **Delegado de Protección de Datos (DPO)** debe realizar sus funciones de forma:",
+        "options": ["Dependiente de las órdenes directas del Responsable de IT.", "Independiente, sin recibir instrucciones sobre el ejercicio de sus tareas.", "Solo durante las horas de auditoría externa."],
+        "correct": 1,
+        "category": "Delegado PD",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Esto garantiza que pueda supervisar el cumplimiento de forma objetiva y reportar a la alta dirección [44], [45]."
+    },
+    {
+        "id": 285,
+        "question": "En un clúster de servidores de **Bases de Datos**, el mecanismo de 'Quorum' sirve para:",
+        "options": ["Acelerar la velocidad de escritura.", "Garantizar que solo una partición mayoritaria pueda tomar decisiones y evitar corrupción de datos.", "Cifrar las copias de seguridad automáticamente."],
+        "correct": 1,
+        "category": "Bases de datos",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Evita el escenario de 'split-brain' donde dos nodos intentan actuar como maestros simultáneamente [46], [47]."
+    },
+    {
+        "id": 286,
+        "question": "¿Qué parámetro de **Iptables** se debe usar para evitar la resolución de DNS y acelerar el listado de reglas?",
+        "options": ["-s", "-n", "-p"],
+        "correct": 1,
+        "category": "Iptables",
+        "modes": ["firewall", "gema", "general"],
+        "tip": "El uso del flag -n (numeric) impide que el comando intente resolver nombres de host, lo que resulta en una respuesta inmediata [1]."
+    },
+    {
+        "id": 287,
+        "question": "En el diseño de una **ACL**, ¿qué riesgo se corre si no se sigue un orden jerárquico lógico?",
+        "options": ["Sobrecarga de CPU.", "Shadowing (reglas que nunca se ejecutan).", "Fuga de memoria RAM."],
+        "correct": 1,
+        "category": "ACL",
+        "modes": ["firewall", "gema", "general"],
+        "tip": "El 'shadowing' ocurre cuando una regla general anterior impide que una regla específica posterior llegue a evaluarse [2]."
+    },
+    {
+        "id": 288,
+        "question": "¿Qué nivel de **RAID** es conocido como 'un desglose de espejos' (strip of mirrors) y requiere al menos 4 discos?",
+        "options": ["RAID 5.", "RAID 6.", "RAID 10."],
+        "correct": 2,
+        "category": "Redundancia",
+        "modes": ["gema", "general", "hardware"],
+        "tip": "El RAID 10 combina la velocidad del striping con la seguridad total del mirroring [3]."
+    },
+    {
+        "id": 289,
+        "question": "Bajo el **Esquema Nacional de Seguridad (ENS)**, ¿qué determina la categoría (Básica, Media o Alta) de un sistema?",
+        "options": ["El número de empleados de la organización.", "El impacto que tendría un incidente sobre la seguridad de la información.", "El presupuesto asignado a ciberseguridad."],
+        "correct": 1,
+        "category": "ENS",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "La clasificación se basa exclusivamente en la magnitud del daño que un fallo de seguridad causaría a la entidad [4, 5]."
+    },
+    {
+        "id": 290,
+        "question": "Un firewall de tipo **Stateful** se caracteriza por:",
+        "options": ["Filtrar únicamente por puerto e IP de destino.", "Mantener una tabla de estados para permitir respuestas a conexiones salientes legítimas.", "Bloquear virus en archivos comprimidos automáticamente."],
+        "correct": 1,
+        "category": "Firewall",
+        "modes": ["gema", "general", "redes"],
+        "tip": "A diferencia del filtrado simple, el estado permite saber si un paquete entrante es parte de una conversación ya establecida [6, 7]."
+    },
+    {
+        "id": 291,
+        "question": "¿Cuál es la función principal de un **Proxy Inverso**?",
+        "options": ["Ocultar la identidad de los empleados al navegar por Internet.", "Situarse frente a los servidores para balancear carga y ofrecer terminación SSL.", "Aumentar la velocidad del Wi-Fi mediante caché de DNS."],
+        "correct": 1,
+        "category": "Tipos de Proxys",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Se utiliza para publicar servicios internos de forma segura hacia el exterior, protegiendo los backends [8, 9]."
+    },
+    {
+        "id": 292,
+        "question": "En la configuración de **Squid**, ¿para qué sirve la directiva `http_access allow localnet`?",
+        "options": ["Para permitir el acceso a Internet a un rango de IPs definido en una ACL previa.", "Para descargar actualizaciones de Windows automáticamente.", "Para cifrar el tráfico de la red local."],
+        "correct": 0,
+        "category": "ProxySquid",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Esta directiva vincula una lista de control de acceso (ACL) de red con el permiso de navegación [10]."
+    },
+    {
+        "id": 293,
+        "question": "Dentro de **Kubernetes**, ¿qué objeto es el adecuado para gestionar aplicaciones que requieren almacenamiento persistente y nombres fijos?",
+        "options": ["Deployments.", "StatefulSets.", "ReplicaSets."],
+        "correct": 1,
+        "category": "Kubernetes",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Los StatefulSets garantizan la identidad del pod y su vinculación estable con volúmenes de datos [11]."
+    },
+    {
+        "id": 295,
+        "question": "Si una empresa sufre una brecha de datos, tiene **72 horas** para notificar a la AEPD desde que:",
+        "options": ["Ocurrió el ataque físicamente.", "Se tenga constancia o conocimiento de la brecha.", "Se terminen de cifrar los datos por el ransomware."],
+        "correct": 1,
+        "category": "Ley de proteccion de datos",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "El reloj empieza a contar en el momento en que la organización confirma el incidente [13, 14]."
+    },
+    {
+        "id": 296,
+        "question": "En un servidor **SSH**, ¿qué directiva se debe configurar en el archivo `sshd_config` para prohibir explícitamente el uso de contraseñas?",
+        "options": ["PasswordAuthentication no", "AllowPassword login=false", "StrictPasswordPolicy yes"],
+        "correct": 0,
+        "category": "SSH",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Esto fuerza el uso de llaves criptográficas (como Ed25519), eliminando riesgos de fuerza bruta [15, 16]."
+    },
+    {
+        "id": 297,
+        "question": "¿Qué protocolo de **VPN** utiliza pares de claves públicas ligeras y es capaz de integrarse directamente en el kernel de Linux?",
+        "options": ["IPsec.", "OpenVPN.", "WireGuard."],
+        "correct": 2,
+        "category": "Tunel VPN",
+        "modes": ["gema", "general", "redes"],
+        "tip": "WireGuard destaca por su minimalismo, alta eficiencia y facilidad de auditoría de código [17, 18]."
+    },
+    {
+        "id": 298,
+        "question": "¿Cuál es la tipología de **DMZ** que utiliza dos firewalls (uno externo y uno interno)?",
+        "options": ["DMZ de un solo brazo (Single-homed).", "Arquitectura de firewall en cascada (Back-to-back).", "DMZ sin firewall."],
+        "correct": 1,
+        "category": "DMZ",
+        "modes": ["gema", "general", "redes"],
+        "tip": "Esta estructura ofrece dos capas de defensa, aislando físicamente la red interna de la zona pública [19, 20]."
+    },
+    {
+        "id": 299,
+        "question": "Al configurar un **Proxy Inverso con NGINX**, ¿para qué sirve la directiva `proxy_set_header X-Real-IP $remote_addr`?",
+        "options": ["Para cifrar la IP del servidor.", "Para pasar la dirección IP real del cliente al servidor de aplicaciones interno.", "Para bloquear ataques DDoS."],
+        "correct": 1,
+        "category": "Proxy inverso con NGINX",
+        "modes": ["gema", "general", "servicios"],
+        "tip": "Es fundamental para que el backend pueda registrar correctamente el origen de las peticiones [21]."
+    },
+    {
+        "id": 300,
+        "question": "El algoritmo de **Balanceador de Carga** denominado 'Least-connections' es preferible cuando:",
+        "options": ["Todos los servidores tienen la misma potencia y sesiones cortas.", "Los servidores tienen capacidades heterogéneas o sesiones de larga duración.", "Se quiere que un usuario siempre vaya al mismo servidor."],
+        "correct": 1,
+        "category": "Balanceador de carga",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Este algoritmo reparte el tráfico basándose en la carga actual de conexiones activas en cada nodo [22]."
+    },
+    {
+        "id": 301,
+        "question": "¿Qué comando de **PowerShell** se utiliza para gestionar los protectores (como el PIN o la clave de recuperación) de **Bitlocker**?",
+        "options": ["Manage-BitLockerKeys", "manage-bde -protectors", "Set-CipherKey"],
+        "correct": 1,
+        "category": "Bitlocker",
+        "modes": ["gema", "general", "sistemas"],
+        "tip": "Este comando permite añadir un PIN o extraer la contraseña de recuperación necesaria para desbloqueos [23, 24]."
+    },
+    {
+        "id": 302,
+        "question": "¿En qué formato se deben entregar los datos al usuario si ejerce su **derecho a la portabilidad** según el RGPD?",
+        "options": ["Un PDF protegido por contraseña.", "Un formato estructurado, de uso común y lectura mecánica (como JSON o CSV).", "Capturas de pantalla de la base de datos."],
+        "correct": 1,
+        "category": "Portabilidad datos",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "El objetivo es permitir la interoperabilidad de los datos entre diferentes prestadores de servicios [25, 26]."
+    },
+    {
+        "id": 303,
+        "question": "Al documentar reglas de firewall, ¿qué es un **'Runbook'**?",
+        "options": ["Un listado de todas las IPs de la empresa.", "Una guía paso a paso con los procedimientos para realizar cambios, failover o recuperaciones.", "Un software de monitorización gráfica."],
+        "correct": 1,
+        "category": "Documentacion",
+        "modes": ["gema", "general", "gestion"],
+        "tip": "Los runbooks reducen el error humano al proporcionar instrucciones operativas claras durante incidentes [27, 28]."
+    },
+    {
+        "id": 304,
+        "question": "¿Qué comando de **PowerShell** muestra si el firewall de Windows está activo en los perfiles Dominio, Privado y Público?",
+        "options": ["Get-NetFirewallProfile", "Show-FirewallStatus", "Get-NetAdapter"],
+        "correct": 0,
+        "category": "PowerShell",
+        "modes": ["comandos", "gema", "general"],
+        "tip": "Permite auditar rápidamente el estado global y las políticas por defecto del firewall de Windows [29, 30]."
+    },
+    {
+        "id": 305,
+        "question": "En el contexto de **Bases de Datos**, el cifrado **TDE** (Transparent Data Encryption) protege principalmente:",
+        "options": ["Los datos mientras viajan por la red (en tránsito).", "Los ficheros físicos de datos almacenados en el disco (en reposo).", "Las consultas SQL enviadas por los desarrolladores."],
+        "correct": 1,
+        "category": "Bases de datos",
+        "modes": ["gema", "general", "sistemas"],
+        "tip": "TDE asegura que si alguien roba los discos físicos o backups, no podrá leer la información sin las claves [31, 32]."
+    },
+    {
+        "id": 306,
+        "question": "¿Cuál es la diferencia entre el flag `-A` e `-I` en un comando de **Iptables**?",
+        "options": ["-A añade al final de la cadena; -I inserta en una posición específica (por defecto la primera).", "-A es para Aceptar y -I es para Ignorar.", "-A solo funciona en la tabla nat y -I en la tabla filter."],
+        "correct": 0,
+        "category": "Iptables",
+        "modes": ["firewall", "gema", "general"],
+        "tip": "El orden de las reglas es vital; usar -I (Insert) asegura que la regla se evalúe antes que las existentes [33, 34]."
+    },
+    {
+        "id": 307,
+        "question": "Dentro de un clúster HA, ¿qué función cumple el mecanismo de **Quorum**?",
+        "options": ["Cifrar las claves de los nodos.", "Garantizar que solo una mayoría de nodos pueda tomar decisiones para evitar el 'split-brain'.", "Aumentar la velocidad de procesamiento de los contenedores."],
+        "correct": 1,
+        "category": "Redundancia",
+        "modes": ["HA", "gema", "general"],
+        "tip": "El quorum evita que dos partes de un clúster dividido intenten actuar como maestros simultáneamente [35, 36]."
+    },
+    {
+        "id": 308,
+        "question": "¿Qué cabecera HTTP es la más utilizada por los servidores **Proxy** para identificar la dirección IP original del cliente?",
+        "options": ["User-Agent.", "X-Forwarded-For.", "Content-Type."],
+        "correct": 1,
+        "category": "Tipos de Proxys",
+        "modes": ["gema", "general", "redes"],
+        "tip": "Esta cabecera es crucial para la auditoría y la seguridad en los servidores de backend finales [21, 37]."
+    },
+    {
+        "id": 309,
+        "question": "En **Kubernetes**, el concepto de **'Auto-healing'** se basa en que el orquestador:",
+        "options": ["Borra los virus automáticamente de los contenedores.", "Monitoriza los pods y los reinicia o reprograma si fallan para mantener el estado deseado.", "Actualiza el hardware del servidor sin apagar la luz."],
+        "correct": 1,
+        "category": "Kubernetes",
+        "modes": ["HA", "gema", "general"],
+        "tip": "Utiliza sondas de vida (liveness probes) para detectar y corregir fallos en tiempo real [11, 38]."
+    },
+    {
+        "id": 310,
+        "question": "El **Registro de Actividades de Tratamiento (ROPA)** debe contener obligatoriamente:",
+        "options": ["Los nombres de todos los empleados de la empresa.", "Finalidad del tratamiento, categorías de datos, base legal y medidas de seguridad.", "El historial de navegación web del DPO."],
+        "correct": 1,
+        "category": "Ley de proteccion de datos",
+        "modes": ["gema", "general", "legislacion"],
+        "tip": "Es un documento vivo que sirve para demostrar la responsabilidad proactiva ante la autoridad [39, 40]."
     }
 ];
 

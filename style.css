@@ -620,6 +620,11 @@ footer p {
     background: #f0fdfa;
 }
 
+.accent-gold .mode-icon {
+    color: #d4af37;
+    background: #fff9e6;
+}
+
 .btn-outline {
     background: transparent;
     border: 2px solid #e2e8f0;
